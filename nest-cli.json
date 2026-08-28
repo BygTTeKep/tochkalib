@@ -1,0 +1,7 @@
+{
+  "sourceRoot": "src",
+  "compilerOptions": {
+    "deleteOutDir": true
+  },
+  "entryFile": "index"
+}
