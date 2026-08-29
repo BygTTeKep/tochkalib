@@ -4,7 +4,7 @@ import {
   TochkaModuleOptions,
 } from './intefaces/tochkaModuleOptions.interface.js';
 import { TOCHKA_MODULE_OPTIONS } from './tochka.constants.js';
-import { PaymentsService } from './payments/payments.service.js';
+import { PaymentsService } from './paymentsLinks/paymentsLinks.service.js';
 import { TochkaHttpService } from './http/tochkaHttp.service.js';
 import { ClientsService } from './clients/clients.service.js';
 
@@ -22,8 +22,14 @@ export class TochkaModule {
         TochkaHttpService,
         PaymentsService,
         ClientsService,
+        PaymentsService,
       ],
-      exports: [PaymentsService],
+      exports: [
+        TochkaHttpService,
+        PaymentsService,
+        ClientsService,
+        PaymentsService,
+      ],
     };
   }
   static forRootAsync(options: TochkaModuleAsyncOptions): DynamicModule {
@@ -40,8 +46,14 @@ export class TochkaModule {
         TochkaHttpService,
         PaymentsService,
         ClientsService,
+        PaymentsService,
       ],
-      exports: [PaymentsService],
+      exports: [
+        TochkaHttpService,
+        PaymentsService,
+        ClientsService,
+        PaymentsService,
+      ],
     };
   }
 }
