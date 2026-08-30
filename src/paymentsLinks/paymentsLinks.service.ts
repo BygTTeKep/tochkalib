@@ -6,7 +6,7 @@ import {
 } from './interfaces/createPaymentLink.interface.js';
 
 @Injectable()
-export class PaymentsService {
+export class PaymentsLinksService {
   constructor(private readonly tochkaHttpService: TochkaHttpService) {}
   /**
    *

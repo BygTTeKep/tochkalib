@@ -1,3 +1,7 @@
+import {
+  BaseLinksResponse,
+  BaseMetaResponse,
+} from '../../intefaces/baseTochkaResponse.interface.js';
 import { TochkaPaymentStatus } from '../enums/paymentStatus.enum.js';
 
 export interface CreatePaymentLinkDto {
@@ -150,24 +154,9 @@ export interface CreatePaymentLinkResponseDtoData {
   paymentMode: string[];
 }
 
-export interface CreatePaymentLinkResponseDtoLinks {
-  /**
-   * Self
-   * Возможные значения: non-empty and <= 2083 characters
-   * Пример: https://enter.tochka.com/uapi
-   */
+export interface CreatePaymentLinkResponseDtoLinks extends BaseLinksResponse {}
 
-  self: string;
-}
-
-export interface CreatePaymentLinkResponseDtoMeta {
-  /**
-   * Totalpages
-   * Пример: 1
-   */
-
-  totalPages: number;
-}
+export interface CreatePaymentLinkResponseDtoMeta extends BaseMetaResponse {}
 
 export interface CreatePaymentLinkResponseDto {
   Data: CreatePaymentLinkResponseDtoData;
