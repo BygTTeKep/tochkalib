@@ -40,5 +40,5 @@ export interface PaymentLinksItemsDto {
    * Пример: шт.
    */
   measure?: string;
-  Supplier: PaymentLinksSupplierDto;
+  Supplier?: PaymentLinksSupplierDto;
 }
