@@ -8,6 +8,7 @@ import { PaymentsLinksService } from './paymentsLinks/paymentsLinks.service.js';
 import { TochkaHttpService } from './http/tochkaHttp.service.js';
 import { ClientsService } from './clients/clients.service.js';
 import { PaymentsService } from './payments/payment.service.js';
+import { AccountsService } from './accounts/accounts.service.js';
 
 @Module({})
 export class TochkaModule {
@@ -24,6 +25,7 @@ export class TochkaModule {
         PaymentsLinksService,
         ClientsService,
         PaymentsService,
+        AccountsService,
       ],
       exports: [PaymentsLinksService, ClientsService, PaymentsService],
     };
@@ -43,6 +45,7 @@ export class TochkaModule {
         PaymentsService,
         ClientsService,
         PaymentsService,
+        AccountsService,
       ],
       exports: [PaymentsService, ClientsService, PaymentsService],
     };
