@@ -2,7 +2,9 @@ import type {
   BaseLinksResponse,
   BaseMetaResponse,
 } from '../../intefaces/baseTochkaResponse.interface.js';
+import { PaymentMode } from '../enums/paymentMode.enum.js';
 import { TochkaPaymentStatus } from '../enums/paymentStatus.enum.js';
+import { TaxSystemCode } from '../enums/taxSystemCode.enum.js';
 import { PaymentLinksClientDto } from './paymentLinksClient.interface.js';
 import { PaymentLinksItemsDto } from './paymentLinksItems.interface.js';
 import { PaymentLinksSupplierDto } from './paymentLinksSupplier.interface.js';
@@ -46,7 +48,7 @@ export interface CreatePaymentOperationWithReceiptDataDto {
    * Возможные значения: [sbp, card, tinkoff, dolyame], >= 1
    * Пример: ["sbp","card","tinkoff","dolyame"]
    */
-  paymentMode: string[];
+  paymentMode: PaymentMode[];
 
   /**
    * Предложить покупателю сохранить карту
@@ -170,7 +172,7 @@ export interface CreatePaymentOperationWithReceiptDataResponseDto {
    * Возможные значения: [sbp, card, tinkoff, dolyame], >= 1
    * Пример: ["sbp","card","tinkoff","dolyame"]
    */
-  paymentMode: string[];
+  paymentMode: PaymentMode[];
 
   /**
    * Уникальный код клиента
@@ -197,7 +199,7 @@ export interface CreatePaymentOperationWithReceiptDataResponseDto {
    * Возможные значения: [osn, usn_income, usn_income_outcome, esn, patent]
    * Пример: osn
    */
-  taxSystemCode?: string;
+  taxSystemCode?: TaxSystemCode;
 
   Client: PaymentLinksClientDto;
   Items: PaymentLinksItemsDto[];

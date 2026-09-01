@@ -2,6 +2,8 @@ import type {
   BaseLinksResponse,
   BaseMetaResponse,
 } from '../../intefaces/baseTochkaResponse.interface.js';
+import { PaymentMode } from '../enums/paymentMode.enum.js';
+import { RegisterStatus } from '../enums/registerStatus.enum.js';
 
 export interface GetRetailersDto {
   /**
@@ -17,7 +19,7 @@ export interface GetRetailersRetailerResponseDto {
    * Возможные значения: [NEW, ADDRESS_DADATA, OPEN_ACCOUNT, TWPG_SENDED, RETAILER_CREATED, TERMINAL_CREATED, FILE_SENT, REG, CLOSE]
    * Пример: REG
    */
-  status: string;
+  status: RegisterStatus;
   /**
    * Статус готовности к работе
    * Пример: true
@@ -61,7 +63,7 @@ export interface GetRetailersRetailerResponseDto {
    * Возможные значения: [sbp, card, tinkoff, dolyame]
    * Пример: ["sbp","card","tinkoff","dolyame"]
    */
-  paymentModes: string[];
+  paymentModes: PaymentMode[];
   /**
    * Название подключённой кассы
    * Пример: businessRu

@@ -2,7 +2,10 @@ import type {
   BaseLinksResponse,
   BaseMetaResponse,
 } from '../../intefaces/baseTochkaResponse.interface.js';
+import { PaymentMode } from '../enums/paymentMode.enum.js';
 import { TochkaPaymentStatus } from '../enums/paymentStatus.enum.js';
+import { PaymentType } from '../enums/paymentType.enum.js';
+import { TaxSystemCode } from '../enums/taxSystemCode.enum.js';
 import type { PaymentLinksClientDto } from './paymentLinksClient.interface.js';
 import type { PaymentLinksCofTokenDto } from './paymentLinksCofToken.interface.js';
 import type { PaymentLinksItemsDto } from './paymentLinksItems.interface.js';
@@ -54,14 +57,14 @@ export interface GetPaymentOperationListDataOperationResponseDto {
    * Возможные значения: [osn, usn_income, usn_income_outcome, esn, patent, envd]
    * Пример: osn
    */
-  taxSystemCode?: string;
+  taxSystemCode?: TaxSystemCode;
   /**
    * Тип оплаты
    * Присутствует, если оплата произведена
    * Возможные значения: [sbp, card, tinkoff, dolyame]
    * ример: card
    */
-  paymentType?: string;
+  paymentType?: PaymentType[];
   /**
    * Идентификатор платежа в процессинге или СБП
    * Пример: A22031016256670100000533E625FCB3
@@ -83,7 +86,7 @@ export interface GetPaymentOperationListDataOperationResponseDto {
    * Возможные значения: [sbp, card, tinkoff, dolyame], >= 1
    * Пример: ["sbp","card","tinkoff","dolyame"]
    */
-  paymentMode?: string;
+  paymentMode?: PaymentMode[];
   /**
    * URL адрес, куда будет переправлен клиент после оплаты услуги
    * Возможные значения: non-empty and <= 2083 characters

@@ -3,6 +3,7 @@ import type {
   BaseMetaResponse,
 } from '../../intefaces/baseTochkaResponse.interface.js';
 import { TochkaPaymentStatus } from '../enums/paymentStatus.enum.js';
+import { PaymentType } from '../enums/paymentType.enum.js';
 
 export interface GetPaymentRegistryDto {
   /**
@@ -83,7 +84,7 @@ export interface GetPaymentRegistryDataResponseDto {
    * Возможные значения: [sbp, card, tinkoff, dolyame]
    * Пример: card
    */
-  paymentType: string;
+  paymentType: PaymentType[];
   /**
    * Сумма всех позиций из этого блока
    * Пример: 18548.39

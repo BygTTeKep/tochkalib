@@ -1,3 +1,5 @@
+import { OperationType } from '../enums/operationType.enum.js';
+
 export interface PaymentLinksOrderDto {
   /**
    * Идентификатор платежа
@@ -7,7 +9,7 @@ export interface PaymentLinksOrderDto {
    * Тип операции
    * Возможные значения: [refund, approval, authorized]
    */
-  type: string;
+  type: OperationType;
   /**
    * Сумма операции
    */
