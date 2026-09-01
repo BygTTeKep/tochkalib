@@ -2,6 +2,7 @@ import {
   BaseLinksResponse,
   BaseMetaResponse,
 } from '../../intefaces/baseTochkaResponse.interface.js';
+import { PaymentMode } from '../enums/paymentMode.enum.js';
 import { TochkaPaymentStatus } from '../enums/paymentStatus.enum.js';
 
 export interface CreatePaymentLinkDto {
@@ -33,7 +34,7 @@ export interface CreatePaymentLinkDto {
    * Пример: ["sbp","card","tinkoff","dolyame"]
    */
 
-  paymentMode: string[];
+  paymentMode: PaymentMode[];
 
   /**
    * URL адрес, куда будет переправлен клиент после оплаты услуги
@@ -151,7 +152,7 @@ export interface CreatePaymentLinkResponseDtoData {
    * Способ оплаты
    */
 
-  paymentMode: string[];
+  paymentMode: PaymentMode[];
 }
 
 export interface CreatePaymentLinkResponseDtoLinks extends BaseLinksResponse {}

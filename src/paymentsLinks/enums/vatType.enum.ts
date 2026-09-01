@@ -1,0 +1,14 @@
+export enum VatType {
+  NONE = 'none',
+  VAT0 = 'vat0',
+  VAT5 = 'vat5',
+  VAT7 = 'vat7',
+  VAT10 = 'vat10',
+  VAT20 = 'vat20',
+  VAT22 = 'vat22',
+  VAT105 = 'vat105',
+  VAT107 = 'vat107',
+  VAT110 = 'vat110',
+  VAT120 = 'vat120',
+  VAT122 = 'vat122',
+}

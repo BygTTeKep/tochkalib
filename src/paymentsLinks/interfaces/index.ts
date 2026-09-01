@@ -1,1 +1,13 @@
+export type * from './capturePayment.interface.js';
 export type * from './createPaymentLink.interface.js';
+export type * from './createPaymentOperationWithReceipt.interface.js';
+export type * from './getPaymentOperationInfo.interface.js';
+export type * from './getPaymentOperationList.interface.js';
+export type * from './getPaymentRegistry.interface.js';
+export type * from './getRetailers.interface.js';
+export type * from './paymentLinksClient.interface.js';
+export type * from './paymentLinksCofToken.interface.js';
+export type * from './paymentLinksItems.interface.js';
+export type * from './paymentLinksOrder.interface.js';
+export type * from './paymentLinksSupplier.interface.js';
+export type * from './refundPayment.interface.js';
