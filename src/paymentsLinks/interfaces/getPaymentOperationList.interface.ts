@@ -5,12 +5,12 @@ import type {
 import { PaymentMode } from '../enums/paymentMode.enum.js';
 import { TochkaPaymentStatus } from '../enums/paymentStatus.enum.js';
 import { PaymentType } from '../enums/paymentType.enum.js';
-import { TaxSystemCode } from '../enums/taxSystemCode.enum.js';
-import type { PaymentLinksClientDto } from './paymentLinksClient.interface.js';
-import type { PaymentLinksCofTokenDto } from './paymentLinksCofToken.interface.js';
-import type { PaymentLinksItemsDto } from './paymentLinksItems.interface.js';
+import { TaxSystemCode } from '../../enums/taxSystemCode.enum.js';
+import type { CorfTokenDto } from '../../intefaces/CofToken.interface.js';
+import type { ItemsDto } from '../../intefaces/Items.interface.js';
 import type { PaymentLinksOrderDto } from './paymentLinksOrder.interface.js';
-import type { PaymentLinksSupplierDto } from './paymentLinksSupplier.interface.js';
+import type { SupplierDto } from '../../intefaces/Supplier.interface.js';
+import { ClientDto } from '../../intefaces/Client.interface.js';
 
 export interface GetPaymentOperationListDto {
   /**
@@ -99,8 +99,8 @@ export interface GetPaymentOperationListDataOperationResponseDto {
    * Пример: https://example.com/fail
    */
   failRedirectUrl?: string;
-  Client: PaymentLinksClientDto;
-  Items: PaymentLinksItemsDto[];
+  Client: ClientDto;
+  Items: ItemsDto[];
   /**
    * Назначение платежа
    * Отсутствует, если при создании платежа назначение не было указано
@@ -139,7 +139,7 @@ export interface GetPaymentOperationListDataOperationResponseDto {
    */
   consumerId?: string;
   Order: PaymentLinksOrderDto[];
-  Supplier?: PaymentLinksSupplierDto;
+  Supplier?: SupplierDto;
   /**
    * Создать платёж с двухэтапной оплатой
    */
@@ -153,7 +153,7 @@ export interface GetPaymentOperationListDataOperationResponseDto {
    * Возможные значения: non-empty and <= 45 characters
    */
   paymentLinkId: string;
-  CofToken: PaymentLinksCofTokenDto;
+  CofToken: CorfTokenDto;
 }
 export interface GetPaymentOperationListDataResponseDto {
   Operation: GetPaymentOperationListDataOperationResponseDto[];

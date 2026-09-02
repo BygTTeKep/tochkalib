@@ -1,4 +1,4 @@
-export interface PaymentLinksSupplierDto {
+export interface SupplierDto {
   /**
    * Номер телефона поставщика
    * Возможные значения: >= 11 characters and <= 15 characters, Value must match regular expression ^\+?\d+$

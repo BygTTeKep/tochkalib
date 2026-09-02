@@ -9,6 +9,7 @@ import { TochkaHttpService } from './http/tochkaHttp.service.js';
 import { ClientsService } from './clients/clients.service.js';
 import { PaymentsService } from './payments/payment.service.js';
 import { AccountsService } from './accounts/accounts.service.js';
+import { SubscriptionsService } from './subscriptions/subscriptions.service.js';
 
 @Module({})
 export class TochkaModule {
@@ -26,8 +27,15 @@ export class TochkaModule {
         ClientsService,
         PaymentsService,
         AccountsService,
+        SubscriptionsService,
       ],
-      exports: [PaymentsLinksService, ClientsService, PaymentsService],
+      exports: [
+        PaymentsService,
+        ClientsService,
+        PaymentsService,
+        AccountsService,
+        SubscriptionsService,
+      ],
     };
   }
   static forRootAsync(options: TochkaModuleAsyncOptions): DynamicModule {
@@ -46,8 +54,15 @@ export class TochkaModule {
         ClientsService,
         PaymentsService,
         AccountsService,
+        SubscriptionsService,
       ],
-      exports: [PaymentsService, ClientsService, PaymentsService],
+      exports: [
+        PaymentsService,
+        ClientsService,
+        PaymentsService,
+        AccountsService,
+        SubscriptionsService,
+      ],
     };
   }
 }

@@ -1,8 +1,8 @@
-import { PaymentMethod } from '../enums/paymentMethod.enum.js';
-import { VatType } from '../enums/vatType.enum.js';
-import type { PaymentLinksSupplierDto } from './paymentLinksSupplier.interface.js';
+import { PaymentMethod } from '../paymentsLinks/enums/paymentMethod.enum.js';
+import { VatType } from '../paymentsLinks/enums/vatType.enum.js';
+import type { SupplierDto } from './Supplier.interface.js';
 
-export interface PaymentLinksItemsDto {
+export interface ItemsDto {
   /**
    * Ставка НДС
    * Возможные значения: [none, vat0, vat5, vat7, vat10, vat20, vat22, vat105, vat107, vat110, vat120, vat122]
@@ -42,5 +42,5 @@ export interface PaymentLinksItemsDto {
    * Пример: шт.
    */
   measure?: string;
-  Supplier?: PaymentLinksSupplierDto;
+  Supplier?: SupplierDto;
 }

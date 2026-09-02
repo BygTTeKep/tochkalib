@@ -1,27 +1,29 @@
+import { TaxSystemCode } from '../../enums/taxSystemCode.enum.js';
 import type {
   BaseLinksResponse,
   BaseMetaResponse,
 } from '../../intefaces/baseTochkaResponse.interface.js';
-import { SupplierDto } from '../../intefaces/Supplier.interface.js';
-import { PaymentMode } from '../enums/paymentMode.enum.js';
-import { TochkaPaymentStatus } from '../enums/paymentStatus.enum.js';
-import { TaxSystemCode } from '../../enums/taxSystemCode.enum.js';
-import { ItemsDto } from '../../intefaces/Items.interface.js';
 import { ClientDto } from '../../intefaces/Client.interface.js';
+import { ItemsDto } from '../../intefaces/Items.interface.js';
+import { SupplierDto } from '../../intefaces/Supplier.interface.js';
+import { TochkaPaymentStatus } from '../../paymentsLinks/index.js';
+import { SubscriptionsOptionsDto } from './subscriptionsOptions.interface.js';
 
-export interface CreatePaymentOperationWithReceiptDataDto {
+export interface CreateSubscriptionWithReceiptDto {
   /**
    * Уникальный код клиента
    * Возможные значения: 9 characters
    * Пример: 300000092
    */
   customerCode: string;
+
   /**
-   * Сумма платежа
+   * Сумма платежа, которая будет списываться в указанный клиентом период
    * Возможные значения: > 0
    * Пример: 1234.00
    */
   amount: number;
+
   /**
    * Назначение платежа
    * Возможные значения: non-empty and <= 140 characters
@@ -44,13 +46,6 @@ export interface CreatePaymentOperationWithReceiptDataDto {
   failRedirectUrl?: string;
 
   /**
-   * Способ оплаты
-   * Возможные значения: [sbp, card, tinkoff, dolyame], >= 1
-   * Пример: ["sbp","card","tinkoff","dolyame"]
-   */
-  paymentMode: PaymentMode[];
-
-  /**
    * Предложить покупателю сохранить карту
    * Пример: true
    */
@@ -64,22 +59,14 @@ export interface CreatePaymentOperationWithReceiptDataDto {
 
   /**
    * Идентификатор торговой точки в интернет-эквайринге
-   * Возможные значения: 15 characters
    * Пример: 200000000001056
    */
   merchantId?: string;
-
   /**
-   * Создать платёж с двухэтапной оплатой
+   * Создание рекуррентной оплаты
    */
-  preAuthorization?: boolean;
-
-  /**
-   * Время жизни платёжной ссылки в минутах
-   * Возможные значения: >= 1 and <= 44640
-   * Значение по умолчанию: 10080
-   */
-  ttl?: number;
+  recurring?: boolean;
+  Options: SubscriptionsOptionsDto;
 
   /**
    * Уникальный номер заказа
@@ -92,17 +79,13 @@ export interface CreatePaymentOperationWithReceiptDataDto {
    * Возможные значения: [osn, usn_income, usn_income_outcome, esn, patent]
    * Пример: osn
    */
-  taxSystemCode?: string;
-
+  taxSystemCode: TaxSystemCode;
   Client: ClientDto;
   Items: ItemsDto[];
   Supplier?: SupplierDto;
 }
-export interface CreatePaymentOperationWithReceiptDto {
-  Data: CreatePaymentOperationWithReceiptDataDto;
-}
 
-export interface CreatePaymentOperationWithReceiptDataResponseDto {
+export interface CreateSubscriptionWithReceiptResponseDataDto {
   /**
    * Назначение платежа
    * Возможные значения: non-empty and <= 140 characters
@@ -111,18 +94,18 @@ export interface CreatePaymentOperationWithReceiptDataResponseDto {
   purpose: string;
 
   /**
-   * Статус платежа
-   * Возможные значения: [CREATED, APPROVED, ON-REFUND, REFUNDED, EXPIRED, REFUNDED_PARTIALLY, AUTHORIZED, WAIT_FULL_PAYMENT]
-   * Пример: CREATED
-   */
-  status?: TochkaPaymentStatus;
-
-  /**
-   * Сумма платежа
-   * Возможные значения: > 0
+   * Сумма платежа, которая будет списываться в указанный клиентом период
    * Пример: 1234.00
    */
   amount: number;
+
+  /**
+   * Статус платежа
+   * Возможные значения: [CREATED]
+   * Значение по умолчанию: CREATED
+   * Пример: CREATED
+   */
+  status: TochkaPaymentStatus;
 
   /**
    * Идентификатор платежа
@@ -141,38 +124,17 @@ export interface CreatePaymentOperationWithReceiptDataResponseDto {
    * Пример: fedac807-078d-45ac-a43b-5c01c57edbf8
    */
   consumerId?: string;
-
   /**
-   * Идентификатор торговой точки в интернет-эквайринге
-   * Возможные значения: 15 characters
-   * Пример: 200000000001056
+   * Рекуррентная подписка
    */
-  merchantId?: string;
-
-  /**
-   * Создать платёж с двухэтапной оплатой
-   */
-  preAuthorization?: boolean;
-
-  /**
-   * Время жизни платёжной ссылки в минутах
-   * Возможные значения: >= 1 and <= 44640
-   * Значение по умолчанию: 10080
-   */
-  ttl?: number;
+  recurring?: boolean;
+  Options: SubscriptionsOptionsDto;
 
   /**
    * Уникальный номер заказа
    * Возможные значения: non-empty and <= 45 characters
    */
   paymentLinkId?: string;
-
-  /**
-   * Способ оплаты
-   * Возможные значения: [sbp, card, tinkoff, dolyame], >= 1
-   * Пример: ["sbp","card","tinkoff","dolyame"]
-   */
-  paymentMode: PaymentMode[];
 
   /**
    * Уникальный код клиента
@@ -194,23 +156,28 @@ export interface CreatePaymentOperationWithReceiptDataResponseDto {
    * Пример: https://example.com/fail
    */
   failRedirectUrl?: string;
+
+  /**
+   * Идентификатор торговой точки в интернет-эквайринге
+   * Пример: 200000000001056
+   */
+  merchantId?: string;
+
   /**
    * Система налогообложения
    * Возможные значения: [osn, usn_income, usn_income_outcome, esn, patent]
    * Пример: osn
    */
   taxSystemCode?: TaxSystemCode;
-
   Client: ClientDto;
   Items: ItemsDto[];
   Supplier?: SupplierDto;
 }
+export interface CreateSubscriptionWithReceiptResponseLinksDto extends BaseLinksResponse {}
+export interface CreateSubscriptionWithReceiptResponseMetaDto extends BaseMetaResponse {}
 
-export interface CreatePaymentOperationWithReceiptLinksResponseDto extends BaseLinksResponse {}
-export interface CreatePaymentOperationWithReceiptMetaResponseDto extends BaseMetaResponse {}
-
-export interface CreatePaymentOperationWithReceiptResponseDto {
-  Data: CreatePaymentOperationWithReceiptDataResponseDto;
-  Links: CreatePaymentOperationWithReceiptLinksResponseDto;
-  Meta: CreatePaymentOperationWithReceiptMetaResponseDto;
+export interface CreateSubscriptionWithReceiptResponseDto {
+  Data: CreateSubscriptionWithReceiptResponseDataDto;
+  Links: CreateSubscriptionWithReceiptResponseLinksDto;
+  Meta: CreateSubscriptionWithReceiptResponseMetaDto;
 }

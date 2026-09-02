@@ -1,4 +1,4 @@
-export interface PaymentLinksClientDto {
+export interface ClientDto {
   /**
    * Для юрлица — название организации, для ИП и физического лица — ФИО
    * Пример: Иванов Иван Иванович
