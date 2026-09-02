@@ -1,4 +1,4 @@
-import { Injectable, RequestTimeoutException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { TochkaHttpService } from '../http/tochkaHttp.service.js';
 import {
   GetAuthorizedCardTransactionsDto,
