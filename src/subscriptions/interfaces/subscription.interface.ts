@@ -1,26 +1,13 @@
-import type {
-  BaseLinksResponse,
-  BaseMetaResponse,
-} from '../../intefaces/baseTochkaResponse.interface.js';
-import { SupplierDto } from '../../intefaces/Supplier.interface.js';
-import { PaymentMode } from '../enums/paymentMode.enum.js';
-import { TochkaPaymentStatus } from '../enums/paymentStatus.enum.js';
-import { PaymentType } from '../enums/paymentType.enum.js';
-import { TaxSystemCode } from '../../enums/taxSystemCode.enum.js';
+import { ClientDto } from '../../intefaces/Client.interface.js';
 import { CorfTokenDto } from '../../intefaces/CofToken.interface.js';
 import { ItemsDto } from '../../intefaces/Items.interface.js';
-import { PaymentLinksOrderDto } from './paymentLinksOrder.interface.js';
-import { ClientDto } from '../../intefaces/Client.interface.js';
+import {
+  TaxSystemCode,
+  TochkaPaymentStatus,
+} from '../../paymentsLinks/index.js';
+import { SubscriptionsOptionsDto } from './subscriptionsOptions.interface.js';
 
-export interface GetPaymentOperationInfoDto {
-  /**
-   * Идентификатор операции
-   * Пример: 48232c9a-ce82-1593-3cb6-5c85a1ffef8f
-   */
-  operationId: string;
-}
-
-export interface GetPaymentOperationInfoOperationResponseDto {
+export interface SubscriptionDto {
   /**
    * Уникальный код клиента
    * Возможные значения: 9 characters
@@ -35,14 +22,6 @@ export interface GetPaymentOperationInfoOperationResponseDto {
    * Пример: osn
    */
   taxSystemCode?: TaxSystemCode;
-
-  /**
-   * Тип оплаты
-   * Присутствует, если оплата произведена
-   * Возможные значения: [sbp, card, tinkoff, dolyame]
-   * Пример: card
-   */
-  paymentType?: PaymentType[];
 
   /**
    * Идентификатор платежа в процессинге или СБП
@@ -62,14 +41,6 @@ export interface GetPaymentOperationInfoOperationResponseDto {
    * Пример: 2022-10-18T08:28:59+00:00
    */
   createdAt: string;
-
-  /**
-   * Способ оплаты
-   * Возможные значения: [sbp, card, tinkoff, dolyame], >= 1
-   * Пример: ["sbp","card","tinkoff","dolyame"]
-   */
-  paymentMode?: PaymentMode[];
-
   /**
    * URL адрес, куда будет переправлен клиент после оплаты услуги
    * Возможные значения: non-empty and <= 2083 characters
@@ -83,10 +54,8 @@ export interface GetPaymentOperationInfoOperationResponseDto {
    * Пример: https://example.com/fail
    */
   failRedirectUrl?: string;
-
   Client?: ClientDto;
-
-  Items?: ItemsDto[];
+  Items: ItemsDto[];
 
   /**
    * Назначение платежа
@@ -107,6 +76,7 @@ export interface GetPaymentOperationInfoOperationResponseDto {
    * Пример: CREATED
    */
   status: TochkaPaymentStatus;
+
   /**
    * Идентификатор платежа
    * Пример: 48232c9a-ce82-1593-3cb6-5c85a1ffef8f
@@ -118,7 +88,6 @@ export interface GetPaymentOperationInfoOperationResponseDto {
    * Пример: https://merch.example.com/order/?uuid=16ea4c54-bf1d-4e6a-a1ef-53ad55666e43
    */
   paymentLink: string;
-
   /**
    * Идентификатор торговой точки в интернет-эквайринге
    * Пример: 200000000001056
@@ -130,40 +99,17 @@ export interface GetPaymentOperationInfoOperationResponseDto {
    * Пример: fedac807-078d-45ac-a43b-5c01c57edbf8
    */
   consumerId?: string;
-
-  Order: PaymentLinksOrderDto[];
-
-  Supplier?: SupplierDto;
+  Options?: SubscriptionsOptionsDto;
 
   /**
-   * Создать платёж с двухэтапной оплатой
+   * Создание рекуррентной оплаты
    */
-  preAuthorization?: boolean;
-
-  /**
-   * Дата и время оплаты
-   */
-  paidAt?: string;
+  recurring?: boolean;
 
   /**
    * Уникальный номер заказа
    * Возможные значения: non-empty and <= 45 characters
    */
   paymentLinkId?: string;
-
-  CofToken: CorfTokenDto;
-}
-
-export interface GetPaymentOperationInfoDataResponseDto {
-  Operation: GetPaymentOperationInfoOperationResponseDto;
-}
-
-export interface GetPaymentOperationInfoLinksResponseDto extends BaseLinksResponse {}
-
-export interface GetPaymentOperationInfoMetaResponseDto extends BaseMetaResponse {}
-
-export interface GetPaymentOperationInfoResponseDto {
-  Data: GetPaymentOperationInfoDataResponseDto;
-  Links: GetPaymentOperationInfoLinksResponseDto;
-  Meta: GetPaymentOperationInfoMetaResponseDto;
+  CorfToken?: CorfTokenDto;
 }

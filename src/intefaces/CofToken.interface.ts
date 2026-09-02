@@ -1,4 +1,4 @@
-export interface PaymentLinksCofTokenDto {
+export interface CorfTokenDto {
   /**
    * Токен карты покупателя
    * Пример: 208452
