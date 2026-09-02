@@ -1,3 +1,7 @@
+import { AccountStatus } from '../enums/accountStatus.enum.js';
+import { AccountSubType } from '../enums/accountSubType.enum.js';
+import { AccountType } from '../enums/accountType.enum.js';
+
 export interface AccountDetailsResponseDto {
   /**
    * Наименование схемы идентификации счёта
@@ -39,7 +43,7 @@ export interface AccountResponseDto {
    * Возможные значения: [Enabled, Disabled, Deleted, ProForma, Pending]
    * Пример: Enabled
    */
-  status: string;
+  status: AccountStatus;
   /**
    * Дата и время изменения статуса счёта. Используется стандарт ISO8601
    * Пример: 2019-01-01T06:06:06.364+00:00
@@ -55,13 +59,13 @@ export interface AccountResponseDto {
    * Возможные значения: [Business, Personal]
    * Пример: Personal
    */
-  accountType: string;
+  accountType: AccountType;
   /**
    * Подтип счёта
    * Возможные значения: [CreditCard, CurrentAccount, Loan, Mortgage, PrePaidCard, Savings, Special]
    * Пример: CurrentAccount
    */
-  accountSubType: string;
+  accountSubType: AccountSubType;
   /**
    * Дата регистрации счета
    * Пример: 2020-10-20
