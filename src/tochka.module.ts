@@ -14,6 +14,7 @@ import { BalancesService } from './balances/balances.service.js';
 import { WebhooksService } from './webhooks/webhooks.service.js';
 import { StatementsService } from './statements/statements.service.js';
 import { InvoicesService } from './invoices/invoices.service.js';
+import { ClosingDocumentsService } from './closingDocuments/closingDocuments.service.js';
 
 @Module({})
 export class TochkaModule {
@@ -36,6 +37,7 @@ export class TochkaModule {
         WebhooksService,
         StatementsService,
         InvoicesService,
+        ClosingDocumentsService,
       ],
       exports: [
         PaymentsService,
@@ -47,6 +49,7 @@ export class TochkaModule {
         WebhooksService,
         StatementsService,
         InvoicesService,
+        ClosingDocumentsService,
       ],
     };
   }
@@ -71,6 +74,7 @@ export class TochkaModule {
         WebhooksService,
         StatementsService,
         InvoicesService,
+        ClosingDocumentsService,
       ],
       exports: [
         PaymentsService,
@@ -82,6 +86,7 @@ export class TochkaModule {
         WebhooksService,
         StatementsService,
         InvoicesService,
+        ClosingDocumentsService,
       ],
     };
   }
