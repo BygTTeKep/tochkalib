@@ -31,8 +31,14 @@ export class TochkaHttpService {
     }
     return res.json() as Promise<T>;
   }
-  get<T>(path: string) {
-    return this.request<T>(path, { method: 'GET' });
+  get<T>(path: string, headers?: HeadersInit) {
+    const init: RequestInit = {
+      method: 'GET',
+    };
+    if (headers) {
+      init.headers = headers;
+    }
+    return this.request<T>(path, init);
   }
   post<T>(path: string, body: unknown) {
     return this.request<T>(path, {
