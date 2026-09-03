@@ -7,5 +7,6 @@ export * from './payments/index.js';
 export * from './paymentsLinks/index.js';
 export * from './subscriptions/index.js';
 export * from './webhooks/index.js';
+export * from './statements/index.js';
 
 export * from './tochka.module.js';
