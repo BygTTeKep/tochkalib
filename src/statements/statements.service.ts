@@ -45,8 +45,8 @@ export class StatementsService {
   /**
    * Метод для получения списка доступных выписок
    * После вызова метода Init Statement можно отследить, в каком статусе готовящаяся выписка: Created — только создан запрос на выписку; Processing — запрос в обработке; Ready — выписка готова.
-   *  Особенности: Отражаются только операции, находящиеся в финальном статусе — Ready.
-   * @returns
+   * Особенности: Отражаются только операции, находящиеся в финальном статусе — Ready.
+   * @returns GetStatementsListResponseDto
    */
   async getStatementsList() {
     return this.tochkaHttpService.get<GetStatementsListResponseDto>(
