@@ -9,5 +9,5 @@ export * from './subscriptions/index.js';
 export * from './webhooks/index.js';
 export * from './statements/index.js';
 export * from './invoices/index.js';
-
+export * from './closingDocuments/index.js';
 export * from './tochka.module.js';
