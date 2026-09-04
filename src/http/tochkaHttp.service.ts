@@ -4,7 +4,9 @@ import {
   BASE_URL,
   TOCHKA_MODULE_OPTIONS,
 } from '../tochka.constants.js';
+import type { BaseErrorDto } from '../intefaces/baseError.interface.js';
 import type { TochkaModuleOptions } from '../intefaces/tochkaModuleOptions.interface.js';
+import { TochkaApiError } from './tochkaApi.error.js';
 
 @Injectable()
 export class TochkaHttpService {
@@ -26,11 +28,24 @@ export class TochkaHttpService {
       },
     });
     if (!res.ok) {
-      //throw new TochkaApiError(res.status, await res.text());
-      throw new Error(); //TODO добавить обвертку для ошибок
+      throw new TochkaApiError(res.status, await this.parseError(res));
     }
     return res.json() as Promise<T>;
   }
+
+  private async parseError(res: Response): Promise<BaseErrorDto> {
+    try {
+      return (await res.json()) as BaseErrorDto;
+    } catch {
+      return {
+        code: String(res.status),
+        id: '',
+        message: res.statusText || 'Tochka API request failed',
+        Errors: [],
+      };
+    }
+  }
+
   get<T>(path: string, headers?: HeadersInit) {
     const init: RequestInit = {
       method: 'GET',
