@@ -16,6 +16,12 @@ import { StatementsService } from './statements/statements.service.js';
 import { InvoicesService } from './invoices/invoices.service.js';
 import { ClosingDocumentsService } from './closingDocuments/closingDocuments.service.js';
 import { ConsentsService } from './consents/consents.service.js';
+import { B2BQrCodeService } from './sbp/b2bQr/b2bQr.service.js';
+import { CashboxQrService } from './sbp/cashboxQr/cashboxQr.service.js';
+import { LegalEntityService } from './sbp/legalEntity/legalEntity.service.js';
+import { MerchantsService } from './sbp/merchants/merchants.service.js';
+import { QrCodesService } from './sbp/qrCodes/qrCodes.service.js';
+import { RefundsService } from './sbp/refunds/refunds.service.js';
 
 @Module({})
 export class TochkaModule {
@@ -40,6 +46,12 @@ export class TochkaModule {
         InvoicesService,
         ClosingDocumentsService,
         ConsentsService,
+        B2BQrCodeService,
+        CashboxQrService,
+        LegalEntityService,
+        MerchantsService,
+        QrCodesService,
+        RefundsService,
       ],
       exports: [
         PaymentsService,
@@ -53,6 +65,12 @@ export class TochkaModule {
         InvoicesService,
         ClosingDocumentsService,
         ConsentsService,
+        B2BQrCodeService,
+        CashboxQrService,
+        LegalEntityService,
+        MerchantsService,
+        QrCodesService,
+        RefundsService,
       ],
     };
   }
@@ -79,6 +97,12 @@ export class TochkaModule {
         InvoicesService,
         ClosingDocumentsService,
         ConsentsService,
+        B2BQrCodeService,
+        CashboxQrService,
+        LegalEntityService,
+        MerchantsService,
+        QrCodesService,
+        RefundsService,
       ],
       exports: [
         PaymentsService,
@@ -92,6 +116,12 @@ export class TochkaModule {
         InvoicesService,
         ClosingDocumentsService,
         ConsentsService,
+        B2BQrCodeService,
+        CashboxQrService,
+        LegalEntityService,
+        MerchantsService,
+        QrCodesService,
+        RefundsService,
       ],
     };
   }
