@@ -12,4 +12,5 @@ export * from './invoices/index.js';
 export * from './closingDocuments/index.js';
 export * from './consents/index.js';
 export * from './sbp/index.js';
+export * from './http/tochkaApi.error.js';
 export * from './tochka.module.js';

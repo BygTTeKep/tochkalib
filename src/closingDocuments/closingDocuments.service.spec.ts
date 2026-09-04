@@ -65,10 +65,9 @@ describe('ClosingDocumentsService', () => {
     await service.createClosingDocument(dto);
 
     expect(http.post).toHaveBeenCalledOnce();
-    expect(http.post).toHaveBeenCalledWith(
-      '/invoice/v1.0/closing-documents',
-      { ...dto },
-    );
+    expect(http.post).toHaveBeenCalledWith('/invoice/v1.0/closing-documents', {
+      ...dto,
+    });
   });
 
   it('deletes a closing document by customer code and document id', async () => {
