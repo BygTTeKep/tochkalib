@@ -1,13 +1,23 @@
 {
   "name": "tochkalib",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Библиотека для работы с API банка Точка.",
+  "author": "BygTTeKep",
   "private": false,
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "repository": "https://github.com/BygTTeKep/tochkalib",
+  "homepage": "https://github.com/BygTTeKep/tochkalib",
+  "bugs": "https://github.com/BygTTeKep/tochkalib",
+  "keywords": [
+    "nestjs",
+    "tochka",
+    "tochka-bank",
+    "banking-api",
+    "tochkalib"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
