@@ -1,6 +1,6 @@
 {
   "name": "tochkalib",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Библиотека для работы с API банка Точка.",
   "author": "BygTTeKep",
   "private": false,
