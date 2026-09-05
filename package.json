@@ -27,8 +27,11 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24.0.0"
+  },
   "scripts": {
-    "build": "nest build",
+    "build": "tsc -p tsconfig.build.json",
     "prepublishOnly": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest"
