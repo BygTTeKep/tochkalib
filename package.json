@@ -5,8 +5,8 @@
   "author": "BygTTeKep",
   "private": false,
   "license": "MIT",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "types": "./dist/esm/index.d.ts",
   "repository": "https://github.com/BygTTeKep/tochkalib",
   "homepage": "https://github.com/BygTTeKep/tochkalib",
   "bugs": "https://github.com/BygTTeKep/tochkalib",
@@ -19,14 +19,10 @@
   ],
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/esm/index.d.ts",
-        "default": "./dist/esm/index.js"
-      },
-      "require": {
-        "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
-      }
+      "types": "./dist/esm/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "default": "./dist/esm/index.js"
     }
   },
   "files": [
