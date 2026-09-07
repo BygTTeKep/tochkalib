@@ -1,6 +1,6 @@
 {
   "name": "tochkalib",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Библиотека для работы с API банка Точка.",
   "author": "BygTTeKep",
   "private": false,
@@ -39,7 +39,6 @@
     "build": "npm run build:esm && npm run build:cjs",
     "build:esm": "tsc -p tsconfig.esm.json",
     "build:cjs": "tsc -p tsconfig.cjs.json && node -e \"require('fs').writeFileSync('dist/cjs/package.json', JSON.stringify({type:'commonjs'}))\"",
-
     "prepublishOnly": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest"
